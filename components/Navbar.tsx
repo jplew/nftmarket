@@ -165,7 +165,11 @@ export function Navbar() {
                       ) : (
                         <a
                           type="button"
+<<<<<<< HEAD
                           className="ml-3 mb-1 flex-shrink-0 bg-transparent text-gray-400 hover:text-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+=======
+                          className="ml-3 flex-shrink-0 bg-transparent text-gray-400 hover:text-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+>>>>>>> origin/main
                         >
                           <span className="sr-only">Open Login Menu</span>
                           <WalletIcon />
