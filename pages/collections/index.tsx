@@ -27,7 +27,7 @@ const CollectionsPage = () => (
                           <Link href={address}>
                             <a>
                               <img
-                                className="h-56 sm:h-56 md:h-44 lg:h-52 2xl:h-64 max-h-64 w-full object-cover shadow-lg aspect-square group-hover:scale-105 transition-scale duration-150 "
+                                className="h-72 sm:h-72 md:h-56 lg:h-80 2xl:h-96 max-h-96 w-full object-cover shadow-lg aspect-square group-hover:scale-105 transition-scale duration-150 "
                                 src={collection.imageUrl}
                                 alt=""
                               />

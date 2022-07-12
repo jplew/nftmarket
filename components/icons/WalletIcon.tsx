@@ -9,7 +9,7 @@ export const WalletIcon: FC<ComponentProps<"svg">> = (
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
-      className="h-6 w-6 mb-1 inline text-gray-400 hover:text-green-300"
+      className="h-6 w-6 inline text-gray-400 hover:text-green-300 bg-gray-900"
       viewBox="0 0 501.55 502.46"
       {...props}
     >
