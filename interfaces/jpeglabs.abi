@@ -1,0 +1,999 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "NftAddr",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "NftID",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "Value",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "Bidder",
+        "type": "address"
+      }
+    ],
+    "name": "BidCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "NftAddr",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "NftID",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "OldBidder",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "NewBidder",
+        "type": "address"
+      }
+    ],
+    "name": "BidOutBid",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "NftAddr",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "NftID",
+        "type": "uint256"
+      }
+    ],
+    "name": "BidRemoved",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "NftAddr",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "NftID",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "Value",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "Offerer",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "Bidder",
+        "type": "address"
+      }
+    ],
+    "name": "Bought",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "NftAddr",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "NftID",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "MinPrice",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "Offerer",
+        "type": "address"
+      }
+    ],
+    "name": "OfferCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "NftAddr",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "NftID",
+        "type": "uint256"
+      }
+    ],
+    "name": "OfferRemoved",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "stateMutability": "payable",
+    "type": "fallback"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "Addr",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ID",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Nft",
+        "name": "_nft",
+        "type": "tuple"
+      },
+      {
+        "internalType": "uint256",
+        "name": "minPrice",
+        "type": "uint256"
+      }
+    ],
+    "name": "AcceptBid",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nftAddr",
+        "type": "address"
+      }
+    ],
+    "name": "ActiveBidCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "ActiveBids",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nftAddr",
+        "type": "address"
+      }
+    ],
+    "name": "ActiveOfferCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "ActiveOffers",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "Addr",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ID",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Nft",
+        "name": "_nft",
+        "type": "tuple"
+      }
+    ],
+    "name": "BidNft",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "Bids",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "Addr",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ID",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Nft",
+        "name": "NFT",
+        "type": "tuple"
+      },
+      {
+        "internalType": "address",
+        "name": "Bidder",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "Value",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "Addr",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ID",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Nft",
+        "name": "_nft",
+        "type": "tuple"
+      }
+    ],
+    "name": "BuyNft",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "CreatorRoyalties",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "Addr",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "Bips",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nftAddr",
+        "type": "address"
+      }
+    ],
+    "name": "GetAllActiveBids",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "Addr",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "ID",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct Nft",
+            "name": "NFT",
+            "type": "tuple"
+          },
+          {
+            "internalType": "address",
+            "name": "Bidder",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "Value",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct MarketBids.Bid[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nftAddr",
+        "type": "address"
+      }
+    ],
+    "name": "GetAllActiveOffers",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "Addr",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "ID",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct Nft",
+            "name": "NFT",
+            "type": "tuple"
+          },
+          {
+            "internalType": "address",
+            "name": "Offerer",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "BuyNowPrice",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "OnlyAcceptFrom",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct MarketOffers.Offer[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "Addr",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ID",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Nft",
+        "name": "_nft",
+        "type": "tuple"
+      }
+    ],
+    "name": "GetBid",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "Addr",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "ID",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct Nft",
+            "name": "NFT",
+            "type": "tuple"
+          },
+          {
+            "internalType": "address",
+            "name": "Bidder",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "Value",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct MarketBids.Bid",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "Addr",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ID",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Nft",
+        "name": "_nft",
+        "type": "tuple"
+      }
+    ],
+    "name": "GetOffer",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "Addr",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "ID",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct Nft",
+            "name": "NFT",
+            "type": "tuple"
+          },
+          {
+            "internalType": "address",
+            "name": "Offerer",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "BuyNowPrice",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "OnlyAcceptFrom",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct MarketOffers.Offer",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "Addr",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ID",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Nft",
+        "name": "_nft",
+        "type": "tuple"
+      }
+    ],
+    "name": "IsBidActive",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "Addr",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ID",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Nft",
+        "name": "_nft",
+        "type": "tuple"
+      }
+    ],
+    "name": "IsOfferActive",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "Addr",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ID",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Nft",
+        "name": "_nft",
+        "type": "tuple"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_buyNowPrice",
+        "type": "uint256"
+      }
+    ],
+    "name": "OfferNft",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "Addr",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ID",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Nft",
+        "name": "_nft",
+        "type": "tuple"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_buyNowPrice",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_toAddress",
+        "type": "address"
+      }
+    ],
+    "name": "OfferNftToAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "Offers",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "Addr",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ID",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Nft",
+        "name": "NFT",
+        "type": "tuple"
+      },
+      {
+        "internalType": "address",
+        "name": "Offerer",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "BuyNowPrice",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "OnlyAcceptFrom",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "Addr",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ID",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Nft",
+        "name": "_nft",
+        "type": "tuple"
+      }
+    ],
+    "name": "RemoveBid",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "Addr",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ID",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Nft",
+        "name": "_nft",
+        "type": "tuple"
+      }
+    ],
+    "name": "WithdrawOffer",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "getPlatformFee",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nftAddr",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "getRotaltyFee",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "bips",
+        "type": "uint256"
+      }
+    ],
+    "name": "setPlatformFee",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nftAddr",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_royaltyAddr",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_Bips",
+        "type": "uint256"
+      }
+    ],
+    "name": "setRoyaltyFee",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "stateMutability": "payable",
+    "type": "receive"
+  }
+]
